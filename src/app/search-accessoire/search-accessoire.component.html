@@ -1,0 +1,84 @@
+
+<div class="container">
+    <div>
+    <h2>Chercher un accessoire</h2> 
+    </div>
+<form name="f1"> Choisir un critère de recherche :
+    <input type="radio" name="critere" [(ngModel)]="critere" value="categorie"> par Catégorie
+    <input type="radio" name="critere" [(ngModel)]="critere" value="matiere">par Matière Première
+    <input type="radio" name="critere" [(ngModel)]="critere" value="type">par Type de bijoux
+</form><br>
+    <div [ngSwitch]="critere">
+        
+        <form name="f2" class="form-inline">
+
+        <div *ngSwitchCase="'matiere'"class="form-group mx-sm-3 mb-2 mt-2 ">
+            <label>Matière à chercher </label>
+            <input type="text" class="form-control" name="matiere" class="form-control" #mat (keyup)="chercherParMat(mat.value)">
+        </div>
+
+    
+               <div *ngSwitchCase="'type'"class="form-group mx-sm-3 mb-2 mt-2 ">
+                   <label>Type de Bijoux à chercher </label>
+                   <input type="text" class="form-control" name="type" class="form-control" #typ (keyup)="chercherParType(typ.value)">
+               </div>
+
+        <div *ngSwitchCase="'categorie'" class="form-group">  Catégorie 
+           <select class="form-control form-control-lg" id="typec" name="typec" [(ngModel)]="categRech" (change)="chercherParCateg()">
+                 <option *ngFor="let category of categories" value="{{category.typec}}">{{category.typec}}</option>
+             </select> 
+            <button type="submit" (click)="reset()" class="btn btn-info mb-2 ml-2">Reinitialiser</button>
+         </div>
+</form>
+</div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+        <h1>Liste des Accessoires</h1>
+
+    <table class="table table-striped" width="100%">
+    <thead>
+    <tr>
+    <th>Type</th>
+    <th>Matiere</th>
+    <th>Categorie</th>
+    <th>Prix</th>
+    <th>Quantité</th>
+    <th>Date insertion</th>
+    
+    </tr>
+    </thead>
+    <tbody *ngFor="let accessoire of tab_acc">
+    <tr>
+    <td>{{accessoire.type}}</td>
+    <td>{{accessoire.matiere | uppercase}}</td>
+    <td>{{accessoire.categ!.typec}}</td>
+    <td>{{accessoire.prix | number : '1.3'}}</td>
+    <td >{{accessoire.qte}}</td>
+    <td>{{accessoire.dateAjout | date:'dd/MM/YYYY' }}</td>
+    
+
+    
+    <td>
+        
+        <a class="btn btn-success" [routerLink]="['/updateAccessoire',accessoire.type]">
+            <img src="../assets/img/edit.png" height="32" width="32"></a>
+         <a class="btn btn-danger" [routerLink]="['/updateAccessoire',accessoire.type]">
+             <img src="../assets/img/delete.png" height="32" width="32"></a>
+        </td>
+        
+</tr>
+</tbody>
+</table>
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+

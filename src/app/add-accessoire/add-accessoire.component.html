@@ -1,0 +1,54 @@
+
+<div class="container">
+    <div>
+    <h2>Ajouter un Accessoire</h2> 
+    </div>
+    <form >
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Type d'article</label>
+    <input type="text" [(ngModel)]="newAccessoire.type" 
+   name="type" class="form-control">
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+    <label >Matière</label>
+    <input type="text" [(ngModel)]="newAccessoire.matiere" 
+   name="matiere" class="form-control">
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Categorie</label>
+        <select class="form-control form-control-lg" id="typec" name="typec"  [(ngModel)]="newTypec">
+        <option *ngFor="let cat of categories" [value]="cat.typec">  {{cat.typec}}</option>
+        </select> 
+        </div>
+        
+
+
+
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Prix</label>
+    <input type="number" [(ngModel)]="newAccessoire.prix" 
+   name="prix" class="form-control">
+    </div>
+
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Quantité</label>
+    <input type="number" [(ngModel)]="newAccessoire.qte" 
+   name="qte" class="form-control">
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+    <label >Date création</label>
+    <input type="date" [(ngModel)]="newAccessoire.dateAjout" 
+   name="dateAjout" class="form-control">
+    </div>
+    
+    <div class="mt-2">
+    <button type="submit" (click)="addArticle()" class="btn 
+   btn-success">Ajouter</button>
+    </div>
+
+    </form>
+   </div>
+  

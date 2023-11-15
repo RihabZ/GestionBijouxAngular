@@ -1,0 +1,41 @@
+<div class="container">
+    <div>
+    <h2>Modifier un accessoire</h2> 
+    </div>
+    <form >
+    <div class="col-sm-2 col-md-2 col-lg-2">
+    <label >Type</label>
+         <input type="text" [(ngModel)]="accessoireCourant.type" name="type" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+            <label >Matiere</label>
+            <input type="text"[(ngModel)]= "accessoireCourant.matiere" name="matiere" class="form-control">
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Categorie</label>
+        <select class="form-control form-control-lg" id="typec" name="typec" [(ngModel)]="typecModifie">
+        <option *ngFor="let category of categories" [value]=" category.typec">{{ category.typec}}</option>
+        </select> 
+        </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >Prix</label>
+            <input type="number" [(ngModel)]= "accessoireCourant.prix" 
+    name="prix" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >Quantité</label>
+            <input type="number" [(ngModel)]= "accessoireCourant.qte" name="qte" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+            <label >Date d'ajout</label>
+            <input type="date" [ngModel]="accessoireCourant.dateAjout | date:  'yyyy-MM-dd'" (ngModelChange)=" accessoireCourant.dateAjout= $event" name="dateAjout" class="form-control">
+    </div>
+    <div class="mt-2">
+            <button type="submit" (click)="modifAccessoire()" class="btn 
+            btn-success">Modifer</button>
+    </div>
+
+    </form>
+    </div> 
+    
